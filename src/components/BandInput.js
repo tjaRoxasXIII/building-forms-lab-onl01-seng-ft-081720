@@ -13,10 +13,18 @@ class BandInput extends Component {
     })
   }
 
+  handleOnSubmit(event) {
+    event.preventDefault();
+    this.props.addBand(this.state);
+    this.setState({
+      name: '',
+    });
+  }
+
   render() {
     return(
       <div>
-        <form onSubmit={this.props.addBand}>
+        <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <input type="text" value={this.state.name} onChange={(event) => this.handleOnChange(event)} />
           <input type="submit" />
         </form>
